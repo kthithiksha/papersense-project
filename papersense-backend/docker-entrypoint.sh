@@ -1,8 +1,6 @@
 #!/bin/sh
-set -eu
+set -e
 
-# Render provides PostgreSQL URLs as postgresql://..., while Spring expects
-# the JDBC equivalent. Local MySQL configuration remains unchanged.
 if [ -n "${DATABASE_URL:-}" ] && [ -z "${SPRING_DATASOURCE_URL:-}" ]; then
   case "$DATABASE_URL" in
     postgresql://*) export SPRING_DATASOURCE_URL="jdbc:${DATABASE_URL}" ;;
