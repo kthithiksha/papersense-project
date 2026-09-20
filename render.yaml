@@ -4,7 +4,7 @@ services:
     runtime: docker
     region: singapore
     plan: free
-    dockerfilePath: ./papersense-backend/Dockerfile
+    dockerfilePath: Dockerfile
     dockerContext: ./papersense-backend
     healthCheckPath: /api/papers
     envVars:
