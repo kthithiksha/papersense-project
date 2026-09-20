@@ -22,34 +22,34 @@ public class Analysis {
     @Column(name = "paper_id", nullable = false)
     private Long paperId;
 
-    @Lob
+    @Column(columnDefinition = "TEXT")
     private String summary;
 
-    @Lob
+    @Column(columnDefinition = "TEXT")
     private String problemStatement;
 
-    @Lob
+    @Column(columnDefinition = "TEXT")
     private String technologies; // JSON array string
 
-    @Lob
+    @Column(columnDefinition = "TEXT")
     private String aiExplanation;
 
-    @Lob
+    @Column(columnDefinition = "TEXT")
     private String methodology;
 
-    @Lob
+    @Column(columnDefinition = "TEXT")
     private String advantages; // JSON array string
 
-    @Lob
+    @Column(columnDefinition = "TEXT")
     private String limitations; // JSON array string
 
-    @Lob
+    @Column(columnDefinition = "TEXT")
     private String researchGaps; // JSON array string
 
-    @Lob
+    @Column(columnDefinition = "TEXT")
     private String suggestedImprovements; // JSON array string
 
-    @Lob
+    @Column(columnDefinition = "TEXT")
     private String futureScope; // JSON array string
 
     @Column(nullable = false)

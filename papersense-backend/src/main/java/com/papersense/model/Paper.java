@@ -25,7 +25,7 @@ public class Paper {
     @Column(nullable = false)
     private String filePath;
 
-    @Lob
+    @Column(columnDefinition = "TEXT")
     private String extractedText;
 
     @Column(nullable = false)
