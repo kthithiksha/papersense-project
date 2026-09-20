@@ -1,6 +1,11 @@
-// VITE_API_BASE_URL is set in Vercel for production and defaults locally.
+// VITE_API_BASE_URL is set in Netlify/Vercel for production and defaults locally.
 const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api')
   .replace(/\/$/, '')
+
+const defaultHeaders = {
+  'Bypass-Tunnel-Reminder': 'true',
+  'bypass-tunnel-reminder': 'true',
+}
 
 /**
  * Small helper that parses JSON responses and turns non-OK responses
@@ -29,6 +34,7 @@ export async function uploadPaper(file) {
 
   const response = await fetch(`${API_BASE_URL}/papers/upload`, {
     method: 'POST',
+    headers: defaultHeaders,
     body: formData,
   })
 
@@ -38,24 +44,30 @@ export async function uploadPaper(file) {
 export async function analyzePaper(paperId) {
   const response = await fetch(`${API_BASE_URL}/papers/${paperId}/analyze`, {
     method: 'POST',
+    headers: defaultHeaders,
   })
 
   return handleResponse(response)
 }
 
 export async function getAnalysis(paperId) {
-  const response = await fetch(`${API_BASE_URL}/papers/${paperId}/analysis`)
+  const response = await fetch(`${API_BASE_URL}/papers/${paperId}/analysis`, {
+    headers: defaultHeaders,
+  })
   return handleResponse(response)
 }
 
 export async function getAllPapers() {
-  const response = await fetch(`${API_BASE_URL}/papers`)
+  const response = await fetch(`${API_BASE_URL}/papers`, {
+    headers: defaultHeaders,
+  })
   return handleResponse(response)
 }
 
 export async function deletePaper(paperId) {
   const response = await fetch(`${API_BASE_URL}/papers/${paperId}`, {
     method: 'DELETE',
+    headers: defaultHeaders,
   })
   return handleResponse(response)
 }
